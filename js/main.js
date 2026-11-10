@@ -126,48 +126,35 @@ function setupContactForm() {
       btn.disabled = false;
       return;
     }
-    let res = null;
-    if (!WEB3FORMS_KEY.startsWith("COLLE")) {
-      try {
-        // Envoi via Web3Forms : le message arrive directement par e-mail
-        res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({
-            access_key: WEB3FORMS_KEY,
-            subject: `[Site] ${data.sujet} — ${data.nom}`,
-            from_name: "Site celiadrcfitness.fr",
-            replyto: data.email,
-            "Nom et prénom": data.nom,
-            "E-mail": data.email,
-            "Téléphone": data.telephone || "—",
-            "Demande": data.sujet,
-            "Message": data.message,
-          }),
-        });
-      } catch {
-        res = null;
-      }
+    // Envoi via Web3Forms : le message arrive directement par e-mail.
+    // Format FormData (sans en-tête Content-Type) = requête « simple », sans vérification préalable du navigateur.
+    const fd = new FormData();
+    fd.append("access_key", WEB3FORMS_KEY);
+    fd.append("subject", `[Site] ${data.sujet} — ${data.nom}`);
+    fd.append("from_name", "Site celiadrcfitness.fr");
+    fd.append("replyto", data.email);
+    fd.append("Nom et prénom", data.nom);
+    fd.append("E-mail", data.email);
+    fd.append("Téléphone", data.telephone || "—");
+    fd.append("Demande", data.sujet);
+    fd.append("Message", data.message);
+    let ok = false;
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: fd });
+      const out = await res.json().catch(() => ({}));
+      ok = res.ok && out.success === true;
+      if (!ok) console.warn("Web3Forms :", res.status, out.message);
+    } catch (err) {
+      console.warn("Web3Forms injoignable :", err);
     }
-    if (res) {
-      // Web3Forms a répondu : on affiche son verdict
-      const out = await res.json().catch(() => ({ success: false }));
-      if (res.ok && out.success) {
-        status.textContent = "Merci ! Ton message a bien été envoyé, je te réponds très vite 😊";
-        status.className = "form-status ok";
-        form.reset();
-      } else {
-        status.textContent = "Une erreur est survenue, réessaie ou écris-moi directement par e-mail.";
-        status.className = "form-status err";
-      }
-      btn.disabled = false;
-      return;
+    if (ok) {
+      status.textContent = "Merci ! Ton message a bien été envoyé, je te réponds très vite 😊";
+      status.className = "form-status ok";
+      form.reset();
+    } else {
+      status.innerHTML = `Oups, le message n'a pas pu partir. Réessaie dans un instant ou écris-moi directement à <a href="mailto:${CONTACT.email}">${CONTACT.email}</a>.`;
+      status.className = "form-status err";
     }
-    // Si le serveur n'est pas joignable, on passe par la messagerie du visiteur
-    const body = `Nom : ${data.nom}\nE-mail : ${data.email}\nTéléphone : ${data.telephone}\n\n${data.message}`;
-    location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent("[Site] " + data.sujet)}&body=${encodeURIComponent(body)}`;
-    status.textContent = "Ta messagerie va s'ouvrir pour envoyer le message.";
-    status.className = "form-status err";
     btn.disabled = false;
   });
 }
