@@ -30,7 +30,7 @@ function renderHeader() {
   el.className = "header";
   el.innerHTML = `
     <div class="container">
-      <a class="logo" href="index.html"><img src="images/logo.png" alt="Céliadrc Fitness"></a>
+      <a class="logo" href="index.html"><img src="images/logo.jpg" alt="Céliadrc — Coach & Prépa physique"></a>
       <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
       <ul class="nav">
         ${PAGES.map(
@@ -56,7 +56,7 @@ function renderFooter() {
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a class="logo" href="index.html"><img src="images/logo.png" alt="Céliadrc Fitness"></a>
+          <a class="logo" href="index.html"><img src="images/logo.jpg" alt="Céliadrc — Coach & Prépa physique"></a>
           <p style="margin-top:12px;max-width:340px">Coach sportive & préparatrice physique — programmation, coaching personnalisé et cours collectifs.</p>
         </div>
         <div>
