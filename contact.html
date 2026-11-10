@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact & Partenaires — Célia</title>
+  <meta name="description" content="Contacter Célia, coach sportive, et profiter du code promo partenaire ZUMUB.">
+  <link rel="icon" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main>
+    <section class="hero" style="padding-bottom:20px">
+      <div class="container" style="display:block">
+        <span class="eyebrow">Contact & Partenaires</span>
+        <h1>On <span class="accent">en parle ?</span></h1>
+        <p class="lead">Une question, un objectif, un projet de cours collectif ? Écris-moi, un simple message ne t'engage à rien !</p>
+      </div>
+    </section>
+
+    <section style="padding-top:20px">
+      <div class="container contact-grid">
+        <div class="business-card reveal">
+          <div class="bc-name">Célia<br>Decraene</div>
+          <div class="bc-role">Coach sportive · Préparatrice physique<br>BPJEPS AF · DEJEPS HMFA</div>
+          <ul class="bc-list">
+            <li><a data-contact="instagram" target="_blank" rel="noopener"><span class="ico">📸</span><span>Instagram · <span class="val"></span></span></a></li>
+            <li><a data-contact="tiktok" target="_blank" rel="noopener"><span class="ico">🎬</span><span>TikTok · <span class="val"></span></span></a></li>
+            <li><a data-contact="email"><span class="ico">✉️</span><span class="val"></span></a></li>
+            <li><a data-contact="telephone"><span class="ico">📞</span><span class="val"></span></a></li>
+          </ul>
+        </div>
+
+        <form class="form reveal" id="contact-form" name="contact" method="POST">
+          <h2 style="font-size:1.6rem">Formulaire de contact</h2>
+          <div class="row">
+            <div class="field">
+              <label for="nom">Nom et prénom *</label>
+              <input id="nom" name="nom" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="telephone">Téléphone</label>
+              <input id="telephone" name="telephone" type="tel" autocomplete="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">E-mail *</label>
+            <input id="email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="sujet">Ta demande concerne</label>
+            <select id="sujet" name="sujet">
+              <option>Programmation</option>
+              <option>Coaching personnalisé</option>
+              <option>Programmation + coaching</option>
+              <option>Cours collectifs</option>
+              <option>Boutique</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" required placeholder="Parle-moi de ton objectif, ton niveau, tes disponibilités…"></textarea>
+          </div>
+          <!-- Champ piège anti-robots, invisible pour les visiteurs -->
+          <div class="hp" aria-hidden="true">
+            <label for="site_web">Ne pas remplir</label>
+            <input id="site_web" name="site_web" tabindex="-1" autocomplete="off">
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="consentement" value="oui" required>
+            <span>J'accepte que mes informations soient utilisées pour répondre à ma demande. *</span>
+          </label>
+          <button class="btn btn-primary" type="submit">Envoyer le message →</button>
+          <p class="form-note">Remplir le formulaire ne t'engage à rien. Tes données sont uniquement utilisées par Célia pour te répondre, conservées 3 ans maximum et jamais revendues. Tu peux à tout moment demander leur suppression. En savoir plus : <a href="confidentialite.html">politique de confidentialité</a>.</p>
+          <div class="form-status" id="form-status" role="status"></div>
+        </form>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Partenaire</span>
+          <h2>Mon partenaire <span class="accent">nutrition</span></h2>
+        </div>
+        <div class="partner reveal">
+          <div class="partner-logo">
+            ZUMUB
+            <img src="images/zumub-logo.png" alt="Logo ZUMUB">
+          </div>
+          <div>
+            <p class="slogan">« Le choix nutritionnel des athlètes d'élite. Rendu accessible à tous. »</p>
+            <p style="color:var(--ink-soft)">Étant en partenariat avec le site <strong>ZUMUB</strong>, profitez de <strong>-10% de réduction</strong> et de nombreux goodies lors de votre commande avec le code :</p>
+            <div class="promo">
+              <code>CAMFT26</code>
+              <button class="btn btn-primary btn-small" type="button" data-copy="CAMFT26">Copier</button>
+            </div>
+            <p style="margin-top:18px"><a class="more" style="font-weight:700;color:var(--coral)" href="https://www.zumub.com" target="_blank" rel="noopener">Aller sur zumub.com →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

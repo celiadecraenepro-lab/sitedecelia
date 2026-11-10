@@ -1,0 +1,6 @@
+# Fichiers qui ne servent qu'avec le serveur local (pas sur GitHub Pages)
+messages.html
+js/messages.js
+images/LISEZ-MOI.txt
+_headers
+_redirects
