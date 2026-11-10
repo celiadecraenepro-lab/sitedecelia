@@ -8,7 +8,7 @@ const CONTACT = {
 
 // ---------- Formulaire de contact : clé Web3Forms ----------
 // Clé gratuite à créer sur https://web3forms.com avec l'adresse qui doit recevoir les messages.
-const WEB3FORMS_KEY = "COLLE-TA-CLE-WEB3FORMS-ICI";
+const WEB3FORMS_KEY = "314aa9e6-801c-463a-894f-1709e00c1172";
 
 const PAGES = [
   { href: "index.html", label: "Accueil" },
